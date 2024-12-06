@@ -1,0 +1,1 @@
+Dette er en treningsdagbok for privat bruk, dermed enkel funksjonalitet skreddersydd for min bruk. Her er link til figma prototype som ble brukt for å få en oversikt over hvordan jeg ville ha den: https://www.figma.com/proto/DGHq48vwqGx01fiKz4p9qv/Boka?node-id=0-1&t=7KYJsThaTQYjIiZu-1
