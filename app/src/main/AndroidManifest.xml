@@ -23,6 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DateDetailsActivity" android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
     </application>
 
 </manifest>
