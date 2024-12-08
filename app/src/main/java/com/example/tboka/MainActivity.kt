@@ -14,6 +14,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.tboka.ui.theme.TBokaTheme
+import androidx.compose.ui.unit.dp
+import androidx.compose.foundation.layout.padding
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,10 +24,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             TBokaTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Boka, your personal workout diary",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                    Surface(color = Color.Cyan) {
+                        Greeting(
+                            name = "Boka, your personal workout diary",
+                            modifier = Modifier.padding(innerPadding)
+                        )
+                    }
                 }
             }
         }
@@ -34,12 +38,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Surface(color = Color.Cyan) {
-        Text(
-            text = "Hello, my name is $name!",
-            modifier = modifier
-        )
-    }
+    Text(
+        text = "Hello, my name is $name!",
+        modifier = modifier.padding(24.dp)
+    )
 }
 
 @Preview(showBackground = true)
