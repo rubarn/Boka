@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import android.widget.CalendarView
 import android.content.Intent
+import android.util.Log
 
 
 class MainActivity : ComponentActivity() {
@@ -28,6 +29,7 @@ class MainActivity : ComponentActivity() {
 
             // Start den nye aktiviteten
             startActivity(intent)
+            Log.d("CALENDARVIEW","User clicked " + selectedDate)
         }
 
     }

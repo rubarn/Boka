@@ -1,10 +1,15 @@
 package com.example.tboka
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
+import android.widget.Button
+import android.widget.CalendarView
 
 class DateDetailsActivity : AppCompatActivity() {
 
@@ -26,6 +31,12 @@ class DateDetailsActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle("")
+
+        //Oppretter ny post når man trykker på add-knappen inne i en dato.
+        val addButt: Button = findViewById(R.id.button)
+        addButt.setOnClickListener {
+            Log.d("BUTTON","User clicked the addButt")
+        }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -33,9 +44,13 @@ class DateDetailsActivity : AppCompatActivity() {
             android.R.id.home -> {
                 // Når tilbake-pilen trykkes, gå tilbake til forrige aktivitet
                 onBackPressed() //Det står at den er utdatert, men det funker ikke uten ...
+                Log.d("TOOLBAR","User clicked back")
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
     }
+
+
+
 }

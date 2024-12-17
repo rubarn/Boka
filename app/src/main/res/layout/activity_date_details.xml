@@ -4,23 +4,68 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
     android:background="@drawable/background5000">
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="250dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center"
+        android:padding="20dp"
+        android:src="@drawable/logo"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="10dp"/>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"/>
 
     <TextView
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
         android:background="@drawable/rounded_background"
         android:padding="10dp"
         android:textColor="#262626"
         android:textSize="20sp" />
 
+    <EditText
+        android:id="@+id/postTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1."
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/rounded_background"
+        android:padding="10dp"
+        android:textColor="#262626"
+        android:textSize="20sp"/>
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="340dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginBottom="21dp"
+        android:background="@drawable/circle_background"
+        android:text="+"
+        android:textColor="#262626"
+        android:textSize="40dp" />
+</RelativeLayout>
 
 </LinearLayout>
