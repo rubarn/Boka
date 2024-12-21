@@ -1,6 +1,6 @@
 package com.example.tboka
 
-import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
@@ -9,7 +9,9 @@ import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
 import android.widget.Button
-import android.widget.CalendarView
+import android.widget.EditText
+import android.widget.LinearLayout
+import androidx.core.view.setPadding
 
 class DateDetailsActivity : AppCompatActivity() {
 
@@ -32,9 +34,35 @@ class DateDetailsActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle("")
 
+        //postCount brukes som en enkel teller til onclick for addButt nedenfor
+        var postCount: Int = 1
         //Oppretter ny post når man trykker på add-knappen inne i en dato.
-        val addButt: Button = findViewById(R.id.button)
+        val addButt: Button = findViewById(R.id.addButton)
         addButt.setOnClickListener {
+
+            postCount += 1
+            val newPost = EditText(this).apply {
+                layoutParams = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+                ).apply {
+                    setMargins(0,30,0,0);
+                    setPadding(25);
+                    setTextColor(Color.parseColor("#262626"));
+                    setTextSize(20F)
+                }
+
+                id = postCount
+                tag = "postTextView$postCount,$selectedDate"
+
+                setText("$postCount. ")
+                background = getDrawable(R.drawable.rounded_background)
+
+                Log.d("id", "$id")
+                Log.d("tag", "$tag")
+            }
+            val rootLayout: LinearLayout = findViewById(R.id.postLayout)
+            rootLayout.addView(newPost)
             Log.d("BUTTON","User clicked the addButt")
         }
     }

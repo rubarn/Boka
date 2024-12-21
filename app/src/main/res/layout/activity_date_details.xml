@@ -13,59 +13,84 @@
         android:layout_gravity="center"
         android:padding="20dp"
         android:src="@drawable/logo"
-        android:layout_marginBottom="50dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"/>
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"/>
+        android:layout_height="52dp"
+        android:background="@drawable/toolbar_background"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/dateTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="16dp"
-        android:background="@drawable/rounded_background"
-        android:padding="10dp"
-        android:textColor="#262626"
-        android:textSize="20sp" />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp" />
 
-    <EditText
-        android:id="@+id/postTextView"
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="#262626"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/addButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="310dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/transparent"
+            android:text="+"
+            android:textColor="#262626"
+            android:textSize="40dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="1."
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/rounded_background"
-        android:padding="10dp"
-        android:textColor="#262626"
-        android:textSize="20sp"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="bottom">
+            <LinearLayout
+                android:id="@+id/postLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="340dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="21dp"
-        android:background="@drawable/circle_background"
-        android:text="+"
-        android:textColor="#262626"
-        android:textSize="40dp" />
-</RelativeLayout>
+                <EditText
+                    android:id="@+id/postTextView0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1."
+                    android:layout_marginTop="30px"
+                    android:background="@drawable/rounded_background"
+                    android:padding="25px"
+                    android:textColor="#262626"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <!--Footer-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="right"
+            android:text=""
+            android:textColor="#8E8686"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
 
 </LinearLayout>
