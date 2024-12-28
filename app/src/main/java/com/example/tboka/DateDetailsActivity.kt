@@ -4,7 +4,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.view.View
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import androidx.appcompat.app.AppCompatActivity
@@ -79,6 +78,26 @@ class DateDetailsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onPause() {
+        super.onPause()
+        val rootLayout: LinearLayout = findViewById(R.id.postLayout)
+        val childCount = rootLayout.childCount
 
+        // Sjekk alle barn i rootLayout
+        for (i in childCount - 1 downTo 0) {
+            val child = rootLayout.getChildAt(i)
+            if (child is EditText) {
+                // Hent teksten fra EditText
+                val text = child.text.toString().trim()
+
+                // Sjekk om teksten kun består av et tall med et punktum
+                val regex = Regex("^\\d+\\.$") // Matcher tekst som "1.", "2.", osv.
+                if (text.matches(regex)) {
+                    rootLayout.removeView(child)
+                    Log.d("CLEANUP", "Removed EditText with only number: id=${child.id}, text='$text'")
+                }
+            }
+        }
+    }
 
 }
