@@ -5,14 +5,27 @@ import androidx.activity.ComponentActivity
 import android.widget.CalendarView
 import android.content.Intent
 import android.util.Log
+import android.widget.Button
+import com.google.firebase.auth.FirebaseAuth
 
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // SetContentView oppretter forbindelse til layout.
-        setContentView(R.layout.activity_main)
+        // Sjekker om brukeren er innlogget
+        val userID = FirebaseAuth.getInstance().currentUser?.uid
+        Log.d("userID", userID.toString())
+
+        if (userID == null) {
+            // Hvis brukeren ikke er innlogget, send til LoginActivity
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish() // Steng nåværende aktivitet
+        } else {
+            // Hvis brukeren er innlogget, fortsett som vanlig
+            Log.d("UserID", userID.toString())
+            setContentView(R.layout.activity_main)
+        }
 
         val calendarView: CalendarView = findViewById(R.id.calendarView)
 
@@ -32,5 +45,20 @@ class MainActivity : ComponentActivity() {
             Log.d("CALENDARVIEW","User clicked " + selectedDate)
         }
 
+        val signoutButton: Button = findViewById(R.id.signoutButton)
+
+        //Sett en listener for utlogging
+        // Funksjon for å logge ut brukeren
+        signoutButton.setOnClickListener() {
+            // Logg ut brukeren fra Firebase
+            FirebaseAuth.getInstance().signOut()
+
+            // Naviger til LoginActivity
+            startActivity(Intent(this, LoginActivity::class.java))
+
+            // Steng MainActivity
+            finish()  // Dette vil fjerne MainActivity fra stacken, slik at brukeren ikke kan gå tilbake
+        }
     }
+
 }

@@ -15,21 +15,22 @@ import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.firestore
 
 
 class DateDetailsActivity : AppCompatActivity() {
 
-    //access Firestore
-    val db = FirebaseFirestore.getInstance()
+    //access Firebase
+    private lateinit var db: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_date_details)
 
         //firebase initialisering
         FirebaseAuth.getInstance()
-        FirebaseFirestore.getInstance()
+        db = FirebaseFirestore.getInstance()
+        Log.d("UserID",Firebase.auth.currentUser?.uid.toString())
 
         // Hent datoen som ble sendt fra MainActivity
         val selectedDate = intent.getStringExtra("selectedDate")
@@ -40,15 +41,14 @@ class DateDetailsActivity : AppCompatActivity() {
 
         // Legg til en tilbake-pil i ActionBar
         val toolbar: Toolbar = findViewById(R.id.toolbar)
-
         setSupportActionBar(toolbar)
-
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setTitle("")
 
         // Last eksisterende data fra Firestore
         if (selectedDate != null) {
             try {
+                Log.d("userID", Firebase.auth.currentUser?.uid.toString())
                 loadDataFromFirestore(selectedDate)
             } catch (e: Exception) {
                 Log.e("FIRESTORE","Unknown error")
@@ -89,10 +89,10 @@ class DateDetailsActivity : AppCompatActivity() {
         }
     }
 
+    // Når tilbake-pilen trykkes, gå tilbake til forrige aktivitet
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                // Når tilbake-pilen trykkes, gå tilbake til forrige aktivitet
                 onBackPressed() //Det står at den er utdatert, men det funker ikke uten ...
                 Log.d("TOOLBAR","User clicked back")
                 return true
@@ -101,6 +101,7 @@ class DateDetailsActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    //Sletter tomme poster og lagrer når man går ut fra DateDetailsActivity
     override fun onPause() {
         super.onPause()
         val rootLayout: LinearLayout = findViewById(R.id.postLayout)
@@ -109,7 +110,7 @@ class DateDetailsActivity : AppCompatActivity() {
         val selectedDate = intent.getStringExtra("selectedDate")
 
         // Sjekk alle barn i rootLayout
-        for (i in childCount - 1 downTo 0) {
+        for (i in childCount - 1 downTo 1) {
             val child = rootLayout.getChildAt(i)
             if (child is EditText) {
                 // Hent teksten fra EditText
@@ -125,6 +126,7 @@ class DateDetailsActivity : AppCompatActivity() {
         }
         if (selectedDate != null) {
             try {
+                Log.d("userID", Firebase.auth.currentUser?.uid.toString())
                 saveDataToFirestore(selectedDate)
             } catch (e: Exception) {
                 Log.e("FIRESTORE","Unknown error")
@@ -135,6 +137,8 @@ class DateDetailsActivity : AppCompatActivity() {
         }
     }
 
+
+    //Lagrer postene til firestore
     private fun saveDataToFirestore(selectedDate: String?) {
         if (selectedDate == null) {
             Log.e("FIRESTORE", "Selected date is null, cannot save data.")
@@ -156,9 +160,9 @@ class DateDetailsActivity : AppCompatActivity() {
         }
 
         // Opprett et dokument med dato som ID og innleggene som data
-        val userId = Firebase.auth.currentUser?.uid
-        if (userId != null) {
-            val docRef = db.collection("users").document(userId)
+        val userID = Firebase.auth.currentUser?.uid
+        if (userID != null) {
+            val docRef = db.collection("users").document(userID)
                 .collection("dates").document(selectedDate)
 
             val data = hashMapOf(
@@ -178,10 +182,11 @@ class DateDetailsActivity : AppCompatActivity() {
         }
     }
 
+    //Henter poster fra firestore
     private fun loadDataFromFirestore(selectedDate: String) {
-        val userId = Firebase.auth.currentUser?.uid
-        if (userId != null) {
-            val docRef = db.collection("users").document(userId)
+        val userID = Firebase.auth.currentUser?.uid
+        if (userID != null) {
+            val docRef = db.collection("users").document(userID)
                 .collection("dates").document(selectedDate)
 
             docRef.get()
@@ -207,6 +212,7 @@ class DateDetailsActivity : AppCompatActivity() {
         }
     }
 
+    //Hjelpemetode til loadDataFromFirestore(). setter inn eksisterende poster
     private fun addEditText(id: Int, text: String) {
         val newPost = EditText(this).apply {
             layoutParams = LinearLayout.LayoutParams(

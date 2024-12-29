@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "986868498544",
+    "project_id": "boka-c210d",
+    "storage_bucket": "boka-c210d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986868498544:android:32c4a77997ba66d6f934b5",
+        "android_client_info": {
+          "package_name": "com.example.tboka"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmYJs-ntD0jWU-dI_rynuJH8wEKpSPZ2Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

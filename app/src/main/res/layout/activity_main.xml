@@ -23,4 +23,16 @@
         android:background="#2CFFFFFF"
 
         android:selectedWeekBackgroundColor="#6B5656" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom">
+    <Button
+        android:id="@+id/signoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:text="Logg ut" />
+    </RelativeLayout>
 </LinearLayout>
