@@ -1,7 +1,7 @@
 # Description of Boka
 
 This is a simple diary app meant for personal use as a workout diary.  
-In this readme, you can read what technologies I have used, and see images as well as the prototype of the app. I will also discuss what I would do to improve the app if it was to be used publicly.
+In this readme, you can read what technologies I have used, and see the prototype of the app as well as screenshots of the final product. I will also discuss what I would do to improve the app if it was to be used publicly.
 
 ## Technology used
 It is developed in Android Studio using Kotlin. For data handling, I utilized Google's free version of Cloud Firestore. This decision was because I did not need many writes and reads, and it was easily available. Some time into the project, some friends and family noted that they wanted to use the app themselves, so I had to extend the functionality to handle multiple users. It was natural to use Google's Firebase Authentication and add functionality for logging in and registering based on an email address and a custom password. I also now had to add some rules to the cloud to prevent users from accessing other users' data.
