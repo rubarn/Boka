@@ -79,8 +79,8 @@ This is the main activity. It is nothing more than a calendar where the user can
 
 ### Date activity
 
-#### With content:
-<img src="Screenshot_dateactivity_content.png" alt="Screenshot date activity with content" align="right" width="300">
+#### Without content:
+<img src="Screenshot_dateactivity_nocontent.png" alt="Screenshot date activity without content" align="right" width="300">
 
 These next two images show the date activity, both with and without content. A blank date with no content already has an empty post, so the user doesn’t have to press the add-button (plus-sign) before writing. This is also intended to help new users get started in case they miss the add-button.
 
@@ -106,8 +106,8 @@ These next two images show the date activity, both with and without content. A b
 <br /> 
 <br /> 
    
-#### Without content:
-<img src="Screenshot_dateactivity_nocontent.png" alt="Screenshot date activity without content" align="right" width="300">
+#### With content:
+<img src="Screenshot_dateactivity_content.png" alt="Screenshot date activity with content" align="right" width="300">
 
 This activity also has the functionality that if a post is without user-made content, the post in question will be deleted when the user goes back to the calendar or closes the app. This is to minimize unnecessary data stored. Users can create as many posts as they want for a selected date, and all posts will be numbered as a list.
 <br /> 
